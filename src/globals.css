@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* cores base: creme quente + cacau */
+    --background: 36 55% 97%;
+    --foreground: 16 25% 22%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 16 25% 22%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 16 25% 22%;
+
+    /* pêssego coral */
+    --primary: 13 71% 66%;
+    --primary-foreground: 20 45% 99%;
+
+    /* lavanda */
+    --secondary: 268 45% 94%;
+    --secondary-foreground: 268 28% 34%;
+
+    --muted: 30 32% 95%;
+    --muted-foreground: 18 12% 44%;
+
+    /* menta */
+    --accent: 160 38% 92%;
+    --accent-foreground: 166 30% 26%;
+
+    --destructive: 0 68% 56%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 28 28% 89%;
+    --input: 28 28% 87%;
+    --ring: 13 71% 66%;
+
+    --radius: 1.25rem;
+
+    /* paleta de apoio */
+    --lavender: 266 50% 86%;
+    --lavender-foreground: 266 26% 32%;
+    --mint: 158 40% 84%;
+    --mint-foreground: 164 30% 24%;
+    --sun: 40 88% 86%;
+    --sun-foreground: 32 45% 28%;
+    --cream: 36 62% 95%;
+
+    /* apoio do diário de cuidados */
+    --sky: 203 72% 88%;
+    --sky-foreground: 206 45% 27%;
+    --rose: 347 72% 91%;
+    --rose-foreground: 344 42% 33%;
+    --clay: 18 58% 85%;
+    --clay-foreground: 14 45% 29%;
+    --sand: 42 46% 86%;
+    --sand-foreground: 34 35% 26%;
+
+    --sidebar-background: 36 55% 98%;
+    --sidebar-foreground: 16 25% 22%;
+    --sidebar-primary: 13 71% 66%;
+    --sidebar-primary-foreground: 20 45% 99%;
+    --sidebar-accent: 30 32% 95%;
+    --sidebar-accent-foreground: 16 25% 22%;
+    --sidebar-border: 28 28% 89%;
+    --sidebar-ring: 13 71% 66%;
+  }
+
+  .dark {
+    --background: 20 15% 11%;
+    --foreground: 36 40% 94%;
+
+    --card: 20 14% 15%;
+    --card-foreground: 36 40% 94%;
+
+    --popover: 20 14% 15%;
+    --popover-foreground: 36 40% 94%;
+
+    --primary: 13 68% 68%;
+    --primary-foreground: 20 30% 12%;
+
+    --secondary: 268 18% 24%;
+    --secondary-foreground: 268 40% 90%;
+
+    --muted: 20 12% 20%;
+    --muted-foreground: 30 14% 68%;
+
+    --accent: 162 18% 24%;
+    --accent-foreground: 160 35% 88%;
+
+    --destructive: 0 55% 48%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 20 12% 24%;
+    --input: 20 12% 24%;
+    --ring: 13 68% 68%;
+
+    --lavender: 266 24% 30%;
+    --lavender-foreground: 266 45% 90%;
+    --mint: 162 20% 26%;
+    --mint-foreground: 160 40% 88%;
+    --sun: 38 30% 28%;
+    --sun-foreground: 40 70% 88%;
+    --cream: 20 12% 18%;
+
+    --sky: 206 24% 27%;
+    --sky-foreground: 204 45% 88%;
+    --rose: 345 22% 30%;
+    --rose-foreground: 345 50% 90%;
+    --clay: 16 22% 30%;
+    --clay-foreground: 18 45% 88%;
+    --sand: 38 18% 28%;
+    --sand-foreground: 40 55% 86%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background-color: hsl(var(--primary) / 0.22);
+  }
+}
+
+@layer utilities {
+  .shadow-soft {
+    box-shadow: 0 18px 40px -26px hsl(14 45% 35% / 0.35);
+  }
+
+  .shadow-float {
+    box-shadow: 0 24px 55px -28px hsl(14 45% 30% / 0.45);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .animate-rise {
+    animation: rise-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .animate-float {
+    animation: float-soft 7s ease-in-out infinite;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .animate-float {
+    animation: none !important;
+  }
+}
